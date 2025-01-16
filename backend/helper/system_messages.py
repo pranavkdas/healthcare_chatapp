@@ -41,6 +41,11 @@ system_instructions_for_confirmation_on_data_extracted = [
     },
     {
         "role": "system",
+        "content": "(FOLLOW STRICTLY) IMAGE URL CANNOT BE CHANGED BY USER NO MATTER WHAT",
+        "type": "string",
+    },
+    {
+        "role": "system",
         "content": "DONT MAKE ASSUMPTIONS ABOUT WHAT VALUES TO PLUG INTO FUNCTIONS. ASK FOR CLARIFICATION IF A USER INPUT IS AMBIGUOUS",
         "type": "string",
     },
