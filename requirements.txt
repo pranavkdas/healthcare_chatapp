@@ -3,7 +3,7 @@ requests
 vercel_blob
 uuid
 chromadb
-pymongo
+pymongo==4.10.1
 collections
 streamlit
 uuid
