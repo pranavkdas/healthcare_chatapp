@@ -4,7 +4,6 @@ vercel_blob
 uuid
 chromadb
 pymongo==4.10.1
-collections
 streamlit
 uuid
 PIL
