@@ -10,12 +10,9 @@ with st.sidebar:
         image="https://cdn.prod.website-files.com/63cf306d39e6c9c427cad680/6579986076bdf4b7c6269536_mantys.svg",
         link="https://streamlit.io/gallery",
     )
-    # openai_api_key = st.text_input(
-    #     "OpenAI API Key", key="chatbot_api_key", type="password"
-    # )
 
 home_page = st.Page("home.py", title="Home", icon=":material/house:")
-second_page = st.Page("second_page.py", title="Help", icon=":material/add_circle:")
+second_page = st.Page("second_page.py", title="Settings", icon=":material/gear:")
 
 pg = st.navigation([home_page, second_page])
 st.set_page_config(

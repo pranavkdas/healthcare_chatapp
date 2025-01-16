@@ -95,7 +95,7 @@ class backend_controller(client_connections):
                 where_document = where_document_final_query
             )
 
-        if filtered_responses.get("documents", []):
+        if filtered_responses.get("documents", []) and filtered_responses["documents"][0]:
             summary_messages = []
             print(len(filtered_responses["documents"][0]))
             for f in filtered_responses["documents"][0]:
@@ -112,7 +112,11 @@ class backend_controller(client_connections):
             system_instructions = [{
                 "role": "system",
                 "content": f"Ensure that while forming the answer, each summary is considered separately",
-            }]
+            }, {
+                "role": "system",
+                "content": "As Exec who is a responsible agent, ensure that you dont make up answers based on imagination to the query. Always answer based on information that is given to you. Otherwise you get a strike"
+            }
+            ]
             new_query = super_parent_system_query+ summary_messages + system_instructions + user_query
             print(new_query)
 
@@ -139,7 +143,7 @@ class backend_controller(client_connections):
 
             return final_response["query_response"] + final_string_to_add
 
-        return "Sorry! Couldn't find any data that satisfies the query given"
+        return "Sorry! Couldn't find any data that satisfies the query given. \n\n Note: It could also be that the query is too complex. Try using simpler queries"
 
     def get_response_to_chat(self, client_id, messages, file_upload_complete):
         tools_chain = []
