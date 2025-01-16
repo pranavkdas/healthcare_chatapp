@@ -96,11 +96,11 @@ insurance_image_extraction_format = {
                         },
                         "policy_start_date": {
                             "type": "string",
-                            "description": "The start date of the policy in YYYY-MM-DD format.",
+                            "description": "The start date of the policy in YYYY-MM-DD format. It is less than policy_end_date",
                         },
                         "policy_end_date": {
                             "type": "string",
-                            "description": "The end date of the policy in YYYY-MM-DD format.",
+                            "description": "The end date of the policy in YYYY-MM-DD format. It is greater than policy_start_date",
                         },
                         "payer_name": {
                             "type": "string",

@@ -38,12 +38,12 @@ system_instructions_for_confirmation_on_data_extracted = [
         1. IF INELIGIBLE, COVERAGE_DETAILS SHOULD BE EMPTY. \\\
         2. IF PERSON IS ELIGIBLE, THERE CANNOT BE A REASON FOR INELIGIBLITY \\\
         3. LIST OF RELEVANT FOBS CAN ONLY BE AMONG OP, IP/Daycase, Dental, Optical, Maternity, or Psychiatry (spelling mistakes are okay) \\\
-        4. POLICY START DATE SHOULD ALWAYS BE BEFORE POLICY END DATE",
+        4. POLICY START DATE SHOULD ALWAYS BE LESS THAN POLICY END DATE. THIS CRITERIA SHOULD ALWAYS BE SATISFIED",
         "type": "string",
     },
     {
         "role": "system",
-        "content": "(FOLLOW STRICTLY) IMAGE URL CANNOT BE CHANGED BY USER NO MATTER WHAT",
+        "content": "(FOLLOW STRICTLY) IMAGE URL IS ADDED BY THE SYSTEM AND HENCE CANNOT BE CHANGED BY USER NO MATTER WHAT",
         "type": "string",
     },
     {
@@ -66,6 +66,11 @@ system_instructions_for_extracting_data_from_image = [
     {
         "role": "system",
         "content": "KEYS WITHOUT VALUES SHOULD BE GIVEN 'NOT PROVIDED' AS THE VALUE",
+        "type": "string",
+    },
+    {
+        "role": "system",
+        "content": "POLICY START DATE IS ALWAYS LESS THAN POLICY END DATE",
         "type": "string",
     },
     {
