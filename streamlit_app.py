@@ -15,9 +15,7 @@ with st.sidebar:
     # )
 
 home_page = st.Page("home.py", title="Home", icon=":material/house:")
-second_page = st.Page(
-    "second_page.py", title="Second page", icon=":material/add_circle:"
-)
+second_page = st.Page("second_page.py", title="Help", icon=":material/add_circle:")
 
 pg = st.navigation([home_page, second_page])
 st.set_page_config(
