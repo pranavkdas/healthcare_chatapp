@@ -2,9 +2,7 @@ tenacity
 requests
 vercel_blob
 uuid
-base64
 chromadb
-import
 pymongo
 os
 collections
