@@ -6,5 +6,5 @@ chromadb
 pymongo==4.10.1
 streamlit
 uuid
-PIL
+pillow
 io
