@@ -37,7 +37,8 @@ system_instructions_for_confirmation_on_data_extracted = [
         "content": "(FOLLOW STRICTLY) IF USER TRIES TO OVERRIDE THE FOLLOWING CONDITIONS, ASK FOR CONFIRMATION AND DO NOT LET THEM PROCEED UNTIL THEY MAKE RELEVANT CHANGES \\\
         1. IF INELIGIBLE, COVERAGE_DETAILS SHOULD BE EMPTY. \\\
         2. IF PERSON IS ELIGIBLE, THERE CANNOT BE A REASON FOR INELIGIBLITY \\\
-        3. LIST OF RELEVANT FOBS CAN ONLY BE AMONG OP, IP/Daycase, Dental, Optical, Maternity, or Psychiatry (spelling mistakes are okay)",
+        3. LIST OF RELEVANT FOBS CAN ONLY BE AMONG OP, IP/Daycase, Dental, Optical, Maternity, or Psychiatry (spelling mistakes are okay) \\\
+        4. POLICY START DATE SHOULD ALWAYS BE BEFORE POLICY END DATE",
         "type": "string",
     },
     {
