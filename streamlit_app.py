@@ -13,7 +13,7 @@ with st.sidebar:
 
 home_page = st.Page("home.py", title="Home", icon=":material/home:")
 second_page = st.Page(
-    "second_page.py", title="Settings", icon=":material/settings_ethernet"
+    "second_page.py", title="Settings", icon=":material/settings_suggest"
 )
 
 pg = st.navigation([home_page, second_page])
