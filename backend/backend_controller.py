@@ -111,11 +111,11 @@ class backend_controller(client_connections):
             }]
             system_instructions = [{
                 "role": "system",
-                "content": f"Ensure that while forming the answer, each summary is considered separately",
+                "content": "As Exec who is a responsible agent, ensure that you dont make up answers based on imagination to the query. Always answer based on information that is given to you. Otherwise you get a strike"
             }, {
                 "role": "system",
-                "content": "As Exec who is a responsible agent, ensure that you dont make up answers based on imagination to the query. Always answer based on information that is given to you. Otherwise you get a strike"
-            }
+                "content": f"Ensure that while forming the answer, each summary is considered and no relevant data is left to be addressed. ",
+            }, 
             ]
             new_query = super_parent_system_query+ summary_messages + system_instructions + user_query
             print(new_query)
