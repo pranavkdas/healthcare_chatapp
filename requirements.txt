@@ -8,4 +8,4 @@ streamlit==1.37.1
 uuid
 pillow
 pysqlite3-binary
-open
+openai
