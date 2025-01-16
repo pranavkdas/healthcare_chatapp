@@ -84,7 +84,7 @@ insurance_image_extraction_format = {
                     "properties": {
                         "emirates_id": {
                             "type": "string",
-                            "description": "The Emirates ID of the individual. Should be a 15-digit unique identifier without any separators like '-' or ' '. Should be kept as '' if the info is not present.",
+                            "description": "The Emirates ID of the individual. Should be a 15-digit unique identifier without any separators like '-' or ' '.",
                         },
                         "name": {
                             "type": "string",
