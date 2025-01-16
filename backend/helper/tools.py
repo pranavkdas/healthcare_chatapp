@@ -108,6 +108,14 @@ insurance_image_extraction_format = {
                         },
                         "fob": {
                             "type": "string",
+                            "enum": [
+                                "op",
+                                "ip_or_daycase",
+                                "dental",
+                                "optical",
+                                "maternity",
+                                "psychiatry",
+                            ],
                             "description": "FOB mentioned in the image.",
                         },
                         "eligibility": {
