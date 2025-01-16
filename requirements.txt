@@ -4,7 +4,6 @@ vercel_blob
 uuid
 chromadb
 pymongo
-os
 collections
 streamlit
 uuid
