@@ -38,7 +38,7 @@ system_instructions_for_confirmation_on_data_extracted = [
         1. IF INELIGIBLE, COVERAGE_DETAILS SHOULD BE EMPTY. \\\
         2. IF PERSON IS ELIGIBLE, THERE CANNOT BE A REASON FOR INELIGIBLITY \\\
         3. LIST OF RELEVANT FOBS CAN ONLY BE AMONG OP, IP/Daycase, Dental, Optical, Maternity, or Psychiatry (spelling mistakes are okay) \\\
-        4. POLICY START DATE SHOULD ALWAYS BE LESS THAN POLICY END DATE. THIS CRITERIA SHOULD ALWAYS BE SATISFIED",
+        4. START DATE OF THE POLICY IS STRICTLY A DATE THAT ALWAYS COMES BEFORE END DATE OF THE POLICY.",
         "type": "string",
     },
     {
@@ -70,7 +70,7 @@ system_instructions_for_extracting_data_from_image = [
     },
     {
         "role": "system",
-        "content": "POLICY START DATE IS ALWAYS LESS THAN POLICY END DATE",
+        "content": "(STRICTLY FOLLOW OR WILL BE GIVEN STRIKE) START DATE OF THE POLICY IS A DATE THAT ALWAYS COMES BEFORE END DATE OF THE POLICY. WHILE EXTRACTING DETAILS, ASSIGN VALUES TO policy_start_date AND policy_end_date STRICTLY BASED ON IT",
         "type": "string",
     },
     {
