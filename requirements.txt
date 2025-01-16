@@ -1,5 +1,4 @@
 tenacity
-json
 requests
 vercel_blob
 uuid
