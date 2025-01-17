@@ -38,8 +38,7 @@ system_instructions_for_confirmation_on_data_extracted = [
         1. IF INELIGIBLE, COVERAGE_DETAILS SHOULD BE EMPTY (PLACEHOLDER TEXTS ARE CONSIDERED EMPTY). \\\
         2. IF PERSON IS ELIGIBLE, THERE CANNOT BE A REASON FOR INELIGIBLITY \\\
         3. LIST OF RELEVANT FOBS CAN ONLY BE AMONG OP, IP/Daycase, Dental, Optical, Maternity, or Psychiatry (spelling mistakes are okay) \\\
-        4. START DATE OF THE POLICY IS STRICTLY A DATE THAT ALWAYS COMES BEFORE END DATE OF THE POLICY.\\\
-        Note: You shouldnt include this message with every confirmation message. Only if user has made changes that affects a specific condition, then only that should should be shown",
+        4. START DATE OF THE POLICY IS STRICTLY A DATE THAT ALWAYS COMES BEFORE END DATE OF THE POLICY.",
         "type": "string",
     },
     {
