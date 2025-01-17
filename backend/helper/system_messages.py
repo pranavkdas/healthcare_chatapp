@@ -23,7 +23,7 @@ system_instructions_for_upload_and_search_tools = [
 system_instructions_for_confirmation_on_data_extracted = [
     {
         "role": "system",
-        "content": "USE DATA IN LAST MESSAGE TO FILL FUNCTION AND CONFIRM WITH USER WHETHER THE DETAILS THEY HAVE PROVIDED IS CORRECT AFTER ALL INFORMATION FOR TOOLS IS RECEIEVED",
+        "content": "USE DATA IN LATEST FEW MESSAGES TO FILL FUNCTION AND CONFIRM WITH USER WHETHER THE DETAILS THEY HAVE PROVIDED IS CORRECT AFTER ALL INFORMATION FOR TOOLS IS RECEIEVED",
         "type": "string",
     },
     {
@@ -54,6 +54,11 @@ system_instructions_for_confirmation_on_data_extracted = [
     {
         "role": "system",
         "content": "ALWAYS REPLY TO USER IN VERBOSE. IF SHOWING DATA, SHOW THEM USING BULLET POINTS",
+        "type": "string",
+    },
+    {
+        "role": "system",
+        "content": "ONCE ALL REQUIRED DATA IS GIVEN, CONFIRM WITH THE USER IF THE WISH TO PROCEED TO ADD THE DATA TO THE SYSTEM",
         "type": "string",
     },
 ]
