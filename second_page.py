@@ -6,8 +6,9 @@ if st.button("Clear data in both ChromaDB and MongoDB"):
     connection = client_connections()
     mongodb = connection.get_mongodb_database()
     chromadb = connection.get_chromadb_client()
+    record_summaries_collection = chromadb.get_or_create_collection("record_summaries")
 
     records_collection = mongodb["insurance_records"]
 
     records_collection.delete_many({})
-    chromadb.delete_collection(name="record_summaries")
+    record_summaries_collection.delete(ids=[])
