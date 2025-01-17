@@ -28,18 +28,23 @@ system_instructions_for_confirmation_on_data_extracted = [
     },
     {
         "role": "system",
-        "content": "(FOLLOW STRICTLY) DO NOT LET THE FUNCTION GET COMPLETED IF ANY OF THE FIELDS EMIRATES ID, NAME, POLICY START DATE, POLICY END DATE, FOB, NETWORK, PAYER NAME, IMAGE URL, ELIGIBILITY IS INVALID (ie NOT ACCORDING TO CONDITIONS MENTIONED IN THEIR TYPE) OR IS EMPTY ('NOT PROVIDED', 'XXXX', 'REDACTED' is considered empty) \\\
+        "content": "(FOLLOW STRICTLY) DO NOT LET THE FUNCTION GET COMPLETED IF ANY OF THE FIELDS EMIRATES ID, NAME, POLICY START DATE, POLICY END DATE, FOB, NETWORK, PAYER NAME, IMAGE URL, ELIGIBILITY IS INVALID (ie NOT ACCORDING TO CONDITIONS MENTIONED IN THEIR TYPE) OR IS EMPTY ('NOT PROVIDED', 'XXXX', 'REDACTED' IS CONSIDERED EMPTY) \\\
         USER SHOULDN'T BE ABLE TO OVERRIDE THIS CONDITION AS WELL AND SHOULD BE WARNED NOT TO DO THIS. EXEC WILL GET A STRIKE FOR FAILING TO ABIDE BY ANY OF THIS CRITERIA.",
         "type": "string",
     },
     {
         "role": "system",
-        "content": "(FOLLOW STRICTLY OR GET A STRIKE) IF USER TRIES TO OVERRIDE THE FOLLOWING CONDITIONS, ASK FOR CONFIRMATION AND DO NOT LET THEM PROCEED UNTIL THEY MAKE RELEVANT CHANGES \\\
-        1. IF INELIGIBLE, COVERAGE_DETAILS SHOULD BE EMPTY. \\\
+        "content": "(FOLLOW STRICTLY) EMIRATES ID SHOULD JUST SATISFY THE REGEX CONDITION PLACED ON IT",
+        "type": "string",
+    },
+    {
+        "role": "system",
+        "content": "(FOLLOW STRICTLY OR GET A STRIKE) IF USER TRIES TO OVERRIDE THE FOLLOWING CONDITIONS, ASK FOR CONFIRMATION AND DO NOT LET THEM PROCEED UNTIL THEY MAKE RELEVANT CHANGES. (ASK ONLY IF THEY ARE TRYING TO VIOLATE THESE RULES) \\\
+        1. IF INELIGIBLE, COVERAGE_DETAILS SHOULD BE EMPTY (PLACEHOLDER TEXTS ARE CONSIDERED EMPTY). \\\
         2. IF PERSON IS ELIGIBLE, THERE CANNOT BE A REASON FOR INELIGIBLITY \\\
         3. LIST OF RELEVANT FOBS CAN ONLY BE AMONG OP, IP/Daycase, Dental, Optical, Maternity, or Psychiatry (spelling mistakes are okay) \\\
         4. START DATE OF THE POLICY IS STRICTLY A DATE THAT ALWAYS COMES BEFORE END DATE OF THE POLICY.\\\
-        Note: You shouldnt include this message with every confirmation message. Only if user has made changes that affects the above 4 conditions, then only it should be shown",
+        Note: You shouldnt include this message with every confirmation message. Only if user has made changes that affects a specific condition, then only that should should be shown",
         "type": "string",
     },
     {
