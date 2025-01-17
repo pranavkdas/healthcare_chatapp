@@ -97,13 +97,11 @@ class backend_controller(client_connections):
 
         if filtered_responses.get("documents", []) and filtered_responses["documents"][0]:
             summary_messages = []
-            print(len(filtered_responses["documents"][0]), query_given_by_user)
             for f in filtered_responses["documents"][0]:
                 summary_messages.append({
                     "role": "system",
                     "content": f"These are summaries of the patient insurance datas: {f}"
                 })
-                print(f)
 
             user_query = [{
                 "role": "user",
@@ -123,7 +121,6 @@ class backend_controller(client_connections):
             }
             ]
             new_query = super_parent_system_query + summary_messages + system_instructions + user_query
-            print(new_query)
 
             response = self.openai_chat_completion_request(
                 messages=new_query,
@@ -136,6 +133,7 @@ class backend_controller(client_connections):
             details_to_find_image_url = final_response["details_to_find_image_url"]
             metadatas = filtered_responses.get("metadatas")[0]
             print(details_to_find_image_url, 'details_to_find_image_url')
+            print(len(filtered_responses["documents"][0]), query_given_by_user)
 
             final_string_to_add = ""
             if details_to_find_image_url:
