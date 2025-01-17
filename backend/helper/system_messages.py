@@ -38,7 +38,8 @@ system_instructions_for_confirmation_on_data_extracted = [
         1. IF INELIGIBLE, COVERAGE_DETAILS SHOULD BE EMPTY. \\\
         2. IF PERSON IS ELIGIBLE, THERE CANNOT BE A REASON FOR INELIGIBLITY \\\
         3. LIST OF RELEVANT FOBS CAN ONLY BE AMONG OP, IP/Daycase, Dental, Optical, Maternity, or Psychiatry (spelling mistakes are okay) \\\
-        4. START DATE OF THE POLICY IS STRICTLY A DATE THAT ALWAYS COMES BEFORE END DATE OF THE POLICY.",
+        4. START DATE OF THE POLICY IS STRICTLY A DATE THAT ALWAYS COMES BEFORE END DATE OF THE POLICY.\\\
+        Note: You shouldnt include this message with every confirmation message. Only if user has made changes that affects the above 4 conditions, then only it should be shown",
         "type": "string",
     },
     {
@@ -54,11 +55,6 @@ system_instructions_for_confirmation_on_data_extracted = [
     {
         "role": "system",
         "content": "ALWAYS REPLY TO USER IN VERBOSE. IF SHOWING DATA, SHOW THEM USING BULLET POINTS",
-        "type": "string",
-    },
-    {
-        "role": "system",
-        "content": "1,12,123,1234,12345,123456,1234567,12345678,123456789,123456789,1234567890 is not placeholder text in case of emirates_id",
         "type": "string",
     },
     {
