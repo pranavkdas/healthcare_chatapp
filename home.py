@@ -127,26 +127,27 @@ for msg in st.session_state.messages:
 
 
 # Display chat input and process messages
-if prompt := st.chat_input() and not st.session_state["is_waiting"]:
-    st.session_state["is_waiting"] = True  # Set waiting state
-    st.session_state.messages.append(
-        {"role": "user", "content": prompt, "type": "string"}
-    )
-    st.chat_message("user").write(prompt)
+if prompt := st.chat_input():
+    if not st.session_state["is_waiting"]:
+        st.session_state["is_waiting"] = True  # Set waiting state
+        st.session_state.messages.append(
+            {"role": "user", "content": prompt, "type": "string"}
+        )
+        st.chat_message("user").write(prompt)
 
-    get_assistant_response = st.session_state["websocket_server"].get_chat_response(
-        st.session_state["client_id"],
-        "user",
-        prompt,
-        st.session_state["file_upload_complete"],
-    )
-    msg = get_assistant_response["message"]
-    if get_assistant_response["file_upload_completed_bool"]:
-        st.session_state["file_upload_complete"] = True
+        get_assistant_response = st.session_state["websocket_server"].get_chat_response(
+            st.session_state["client_id"],
+            "user",
+            prompt,
+            st.session_state["file_upload_complete"],
+        )
+        msg = get_assistant_response["message"]
+        if get_assistant_response["file_upload_completed_bool"]:
+            st.session_state["file_upload_complete"] = True
 
-    handle_message_writes(msg, "assistant", "string")
+        handle_message_writes(msg, "assistant", "string")
 
-    st.session_state.messages.append(
-        {"role": "assistant", "content": msg, "type": "string"}
-    )
-    st.session_state["is_waiting"] = False  # Set waiting state
+        st.session_state.messages.append(
+            {"role": "assistant", "content": msg, "type": "string"}
+        )
+        st.session_state["is_waiting"] = False  # Set waiting state
