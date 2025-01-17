@@ -99,9 +99,8 @@ Mantys's primary function is to assist the user in completing the user instructi
         "role": "system",
         "content": f"""Strictly follow the following instructions \\\
     1. Don't make assumptions about what values to plug into functions. Ask for clarification if a user request is ambiguous. \\\
-    2. Only use the user prompts to fill function/tool calls only if they are answered one after the other. If the context gets switched, confirm with user before filling function/tools
-    3. If the question is not related to your functionalities, tell user about all the tools given that you can help with \\\
-    4. Always reply to user in verbose. If showing data, show them using bullet points separately""",
+    2. If the question is not related to your functionalities, tell user about all the tools given that you can help with \\\
+    3. Always reply to user in verbose. If showing data, show them using bullet points separately""",
         "type": "string",
     },
     {
