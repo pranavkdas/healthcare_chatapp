@@ -186,7 +186,7 @@ insurance_image_extraction_tool = {
             "properties": {
                 "emirates_id": {
                     "type": "string",
-                    "description": "The Emirates ID of the individual. Should be a 15-digit unique identifier. It cannot be empty or contain placeholder text like redacted, invalid, xxx etc",
+                    "description": "The Emirates ID of the individual. Should satisfy this regex: ^[1–9][0-9]{14}$ (ie it should be a 15-digit unique identifier). It cannot be empty or contain placeholder text like redacted, invalid, xxx etc",
                 },
                 "name": {
                     "type": "string",
