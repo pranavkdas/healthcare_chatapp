@@ -23,13 +23,6 @@ import base64
 import logging
 import sys
 
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
-    datefmt="%d/%b/%Y %H:%M:%S",
-    stream=sys.stdout)
-
-
 class backend_controller(client_connections):
     def __init__(self):
         super().__init__()
