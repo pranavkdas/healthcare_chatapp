@@ -11,4 +11,4 @@ if st.button("Clear data in both ChromaDB and MongoDB"):
     records_collection = mongodb["insurance_records"]
 
     records_collection.delete_many({})
-    record_summaries_collection.delete(where={}})
+    record_summaries_collection.delete(where={})
