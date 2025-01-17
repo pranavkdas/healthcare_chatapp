@@ -122,10 +122,9 @@ class backend_controller(client_connections):
                 "role": "system",
                 "content": "STRICTLY FOLLOW THE FOLLOWING RULES OR GET STRIKES \\\
                 1. Exec must ensure that while forming the answer, each summary is considered and no relevant data is ignored\\\
-                2. Only if Exec absolutely feels that multiple people might fit the answer to the user's query, he or should include them in the answers\\\
-                3. All fobs and emirates id relevant to the answer to the user's query should be mentioned in the 'details_to_find_image_url' key of the response in the structure given there. \\\
-                4. If any fob or emirate id that is relevant to the answer (to the user's query based on filtered info) is ignored, it will lead to 2 strikes instead of one\\\
-                5. If any fob or emirate id that is irrelevant to the answer (to the user's query based on filtered info) is included, then it will lead to 2 strikes instead of one",
+                2. All fobs and emirates id relevant to the answer to the user's query should be mentioned in the 'details_to_find_image_url' key of the response in the structure given there. \\\
+                3. If any fob or emirate id that is relevant to the answer (to the user's query based on filtered info) is ignored, it will lead to 2 strikes instead of one\\\
+                4. If any fob or emirate id that is irrelevant to the answer (to the user's query based on filtered info) is included, then it will lead to 2 strikes instead of one",
             }, {
                 "role": "system",
                 "content": "ALWAYS REPLY TO USER IN VERBOSE. IF SHOWING DATA, SHOW THEM USING BULLET POINTS",
