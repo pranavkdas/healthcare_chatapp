@@ -13,6 +13,8 @@ if "messages" not in st.session_state:
         {"role": "assistant", "content": "Hi! How may I help you?", "type": "string"},
     ]
     st.session_state["file_upload_complete"] = True
+
+if not st.session_state.get("websocket_server"):
     st.session_state["websocket_server"] = websocket_chat_controller()
     st.session_state["client_id"] = "1234"
 
