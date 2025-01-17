@@ -151,5 +151,6 @@ if not st.session_state["is_waiting"]:
             {"role": "assistant", "content": msg, "type": "string"}
         )
         st.session_state["is_waiting"] = False  # Set waiting state
+        st.rerun()
 else:
     st.info("Waiting for API response...")
