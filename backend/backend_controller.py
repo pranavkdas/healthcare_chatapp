@@ -20,6 +20,15 @@ import requests
 import vercel_blob
 import uuid
 import base64
+import logging
+import sys
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
+    datefmt="%d/%b/%Y %H:%M:%S",
+    stream=sys.stdout)
+
 
 class backend_controller(client_connections):
     def __init__(self):
@@ -82,8 +91,6 @@ class backend_controller(client_connections):
         contains_query = [{"$contains": key.lower()} for key in contains_keywords]
         not_contains_query =  [{"$not_contains": key.lower()} for key in not_contains_keywords]
         where_document_query = contains_query + not_contains_query
-        print('2222222222222222222222222')
-        print(contains_keywords, not_contains_keywords)
         filtered_responses = {}
         if where_document_query:
             where_document_final_query = {"$and": where_document_query}
@@ -136,8 +143,12 @@ class backend_controller(client_connections):
 
             details_to_find_image_url = final_response["details_to_find_image_url"]
             metadatas = filtered_responses.get("metadatas")[0]
-            print(details_to_find_image_url, 'details_to_find_image_url')
-            print(len(filtered_responses["documents"][0]), query_given_by_user)
+
+            logging.info(f"query {query_given_by_user}")
+            logging.info(f"{contains_keywords} - {not_contains_keywords}")
+
+            logging.info(f"details_to_find_image_url {details_to_find_image_url}")
+            logging.info(f"{len(filtered_responses["documents"][0])} length of filtered responses")
 
             final_string_to_add = ""
             if details_to_find_image_url:
@@ -149,7 +160,7 @@ class backend_controller(client_connections):
                                 if key in metadata:
                                     final_string_to_add += metadata[key] + " \n "
 
-            return final_response["query_response"] + final_string_to_add + f"{details_to_find_image_url} details_to_find_image_url {query_given_by_user}"
+            return final_response["query_response"] + final_string_to_add
 
         return "Sorry! Couldn't find any data that satisfies the query given. \n\n Note: It could also be that the query is too complex. Try using simpler queries"
 
