@@ -14,6 +14,10 @@ if "messages" not in st.session_state:
     ]
     st.session_state["file_upload_complete"] = True
 
+# Initialize session state variables
+if "is_waiting" not in st.session_state:
+    st.session_state.is_waiting = False  # Tracks if API call is in progress
+
 if not st.session_state.get("websocket_server"):
     st.session_state["websocket_server"] = websocket_chat_controller()
     st.session_state["client_id"] = "1234"
@@ -121,24 +125,31 @@ for msg in st.session_state.messages:
     if msg["role"] != "system":
         handle_message_writes(msg["content"], msg["role"], msg["type"])
 
-if prompt := st.chat_input():
-    st.session_state.messages.append(
-        {"role": "user", "content": prompt, "type": "string"}
-    )
-    st.chat_message("user").write(prompt)
 
-    get_assistant_response = st.session_state["websocket_server"].get_chat_response(
-        st.session_state["client_id"],
-        "user",
-        prompt,
-        st.session_state["file_upload_complete"],
-    )
-    msg = get_assistant_response["message"]
-    if get_assistant_response["file_upload_completed_bool"]:
-        st.session_state["file_upload_complete"] = True
+# Display chat input and process messages
+if not st.session_state["is_waiting"]:
+    if prompt := st.chat_input():
+        st.session_state["is_waiting"] = True  # Set waiting state
+        st.session_state.messages.append(
+            {"role": "user", "content": prompt, "type": "string"}
+        )
+        st.chat_message("user").write(prompt)
 
-    handle_message_writes(msg, "assistant", "string")
+        get_assistant_response = st.session_state["websocket_server"].get_chat_response(
+            st.session_state["client_id"],
+            "user",
+            prompt,
+            st.session_state["file_upload_complete"],
+        )
+        msg = get_assistant_response["message"]
+        if get_assistant_response["file_upload_completed_bool"]:
+            st.session_state["file_upload_complete"] = True
 
-    st.session_state.messages.append(
-        {"role": "assistant", "content": msg, "type": "string"}
-    )
+        handle_message_writes(msg, "assistant", "string")
+
+        st.session_state.messages.append(
+            {"role": "assistant", "content": msg, "type": "string"}
+        )
+        st.session_state["is_waiting"] = False  # Set waiting state
+else:
+    st.info("Waiting for API response...")
