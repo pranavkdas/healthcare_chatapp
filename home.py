@@ -75,7 +75,8 @@ def handle_upload_file():
 
 def handle_message_writes(msg, role, type_of_msg):
     if type_of_msg == "string":
-        msg_list = msg.split("\n")
+        msg_list = msg.replace("\n\n", " \n\n ")
+        msg_list = [m.replace(" \n ", " \n\n ") for m in msg_list if m != ""]
         msg_list = [m.strip() for m in msg_list if m != ""]
 
         o1_bool = False

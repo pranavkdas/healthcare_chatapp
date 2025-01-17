@@ -145,7 +145,7 @@ class backend_controller(client_connections):
                                 if key in metadata:
                                     final_string_to_add += metadata[key] + " \n "
 
-            return final_response["query_response"] + final_string_to_add
+            return final_response["query_response"] + final_string_to_add + f"{details_to_find_image_url} details_to_find_image_url {query_given_by_user}"
 
         return "Sorry! Couldn't find any data that satisfies the query given. \n\n Note: It could also be that the query is too complex. Try using simpler queries"
 
