@@ -75,7 +75,7 @@ class backend_controller(client_connections):
         # Write function to add them into messages column
         return
 
-    def get_filtered_responses_from_search(self, query, contains_keywords, not_contains_keywords):
+    def get_filtered_responses_from_search(self, query_given_by_user, contains_keywords, not_contains_keywords):
         chromadb = self.get_chromadb_client()
         chroma_collection = chromadb.get_or_create_collection(name="record_summaries")
 
@@ -90,14 +90,14 @@ class backend_controller(client_connections):
             if len(where_document_query)==1:
                 where_document_final_query=where_document_query[0]
             filtered_responses = chroma_collection.query(
-                query_texts=[query], # Chroma will embed this for you
+                query_texts=[query_given_by_user], # Chroma will embed this for you
                 n_results=5, # how many results to return
                 where_document = where_document_final_query
             )
 
         if filtered_responses.get("documents", []) and filtered_responses["documents"][0]:
             summary_messages = []
-            print(len(filtered_responses["documents"][0]))
+            print(len(filtered_responses["documents"][0]), query_given_by_user)
             for f in filtered_responses["documents"][0]:
                 summary_messages.append({
                     "role": "system",
@@ -107,17 +107,22 @@ class backend_controller(client_connections):
 
             user_query = [{
                 "role": "user",
-                "content": f"Answer the following query (to a good extend) using the filtered data given above: The query is: {query}",
+                "content": f"Answer the following query (to a good extend) using the filtered data given above: The query is: {query_given_by_user}",
             }]
             system_instructions = [{
                 "role": "system",
                 "content": "As Exec who is a responsible agent, ensure that you dont make up answers based on imagination to the query. Always answer based on information that is given to you. Otherwise you get a strike"
             }, {
                 "role": "system",
-                "content": f"Ensure that while forming the answer, each summary is considered and no relevant data is left to be addressed. ",
-            }, 
+                "content": "STRICTLY FOLLOW THE FOLLOWING RULES OR GET STRIKES \\\
+                1. Exec must ensure that while forming the answer, each summary is considered and no relevant data is ignored\\\
+                2. Only if Exec absolutely feels that multiple people might fit the answer to the user's query, he or should include them in the answers\\\
+                3. All fobs and emirates id relevant to the answer to the user's query should be mentioned in the 'details_to_find_image_url' key of the response in the structure given there. \\\
+                4. If any fob or emirate id that is relevant to the answer (to the user's query based on filtered info) is ignored, it will lead to 2 strikes instead of one\\\
+                5. If any fob or emirate id that is irrelevant to the answer (to the user's query based on filtered info) is included, then it will lead to 2 strikes instead of one",
+            }
             ]
-            new_query = super_parent_system_query+ summary_messages + system_instructions + user_query
+            new_query = super_parent_system_query + summary_messages + system_instructions + user_query
             print(new_query)
 
             response = self.openai_chat_completion_request(
@@ -130,6 +135,7 @@ class backend_controller(client_connections):
 
             details_to_find_image_url = final_response["details_to_find_image_url"]
             metadatas = filtered_responses.get("metadatas")[0]
+            print(details_to_find_image_url, 'details_to_find_image_url')
 
             final_string_to_add = ""
             if details_to_find_image_url:
