@@ -186,7 +186,7 @@ insurance_image_extraction_tool = {
             "properties": {
                 "emirates_id": {
                     "type": "string",
-                    "description": "The Emirates ID of the individual. Should be a 15-digit unique identifier made only of numbers and doesn't start with zero",
+                    "description": "The Emirates ID of the individual. Should be a 15-digit identifier made only of numbers and doesn't start with zero",
                 },
                 "name": {
                     "type": "string",
